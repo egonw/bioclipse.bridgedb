@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="net.bioclipse.bridgedb_feature"
+      label="Bioclipse BridgeDB"
+      version="2.5.0.qualifier"
+      provider-name="Egon Willighagen"
+      plugin="net.bioclipse.bridgedb">
+
+   <description>
+      Bioclipse BridgeDB - Support for BridgeDB.org
+   </description>
+
+   <copyright>
+      Copyright (c) 2011  Egon Willighagen
+   </copyright>
+
+   <license>
+      Eclipse Public License.
+   </license>
+
+   <requires>
+      <import feature="net.bioclipse.core_feature" version="2.5.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="net.bioclipse.bridgedb"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
