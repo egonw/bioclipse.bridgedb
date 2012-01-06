@@ -13,8 +13,10 @@ package net.bioclipse.bridgedb;
 import net.bioclipse.bridgedb.business.IBridgedbManager;
 import net.bioclipse.bridgedb.business.IJavaBridgedbManager;
 import net.bioclipse.bridgedb.business.IJavaScriptBridgedbManager;
+import net.bioclipse.core.business.BioclipseException;
 
 import org.apache.log4j.Logger;
+import org.bridgedb.bio.BioDataSource;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
@@ -51,6 +53,14 @@ public class Activator extends AbstractUIPlugin {
                                   null );
 
         jsFinderTracker.open();
+        
+    	try {
+			Class.forName("org.bridgedb.webservice.bridgerest.BridgeRest");
+		} catch (ClassNotFoundException exception) {
+			throw new BioclipseException("Could not load the BridgeDB REST driver");
+		}
+    	BioDataSource.init();
+
     }
 
     public void stop(BundleContext context) throws Exception {
