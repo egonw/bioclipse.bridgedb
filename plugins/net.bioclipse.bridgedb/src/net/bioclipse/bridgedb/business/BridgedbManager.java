@@ -10,9 +10,14 @@
  ******************************************************************************/
 package net.bioclipse.bridgedb.business;
 
+import java.util.Set;
+
 import net.bioclipse.managers.business.IBioclipseManager;
 
 import org.apache.log4j.Logger;
+import org.bridgedb.BridgeDb;
+import org.bridgedb.DataSource;
+import org.bridgedb.IDMapper;
 import org.bridgedb.Xref;
 import org.bridgedb.bio.BioDataSource;
 
@@ -28,10 +33,28 @@ public class BridgedbManager implements IBioclipseManager {
         return "bridgedb";
     }
 
-    public String doStuff() {
+    public String doStuff() throws Exception {
     	logger.debug("doing stuff...");
-    	Xref ref = new Xref("ENSG00000171105", BioDataSource.ENSEMBL_HUMAN);
+    	Class.forName("org.bridgedb.webservice.bridgerest.BridgeRest");
+    	BioDataSource.init();
 
-    	return ref.getUrl();
+    	// now we connect to the driver and create a IDMapper instance.
+    	IDMapper mapper = BridgeDb.connect ("idmapper-bridgerest:http://webservice.bridgedb.org/Human");
+
+    	// We create an Xref instance for the identifier that we want to look up.
+    	// In this case we want to look up Entrez gene 3643.
+    	Xref src = new Xref ("3643", BioDataSource.ENTREZ_GENE);
+
+    	// let's see if there are cross-references to Ensembl Human
+    	Set<Xref> dests = mapper.mapID(src, DataSource.getBySystemCode("EnHs"));
+
+    	// and print the results.
+    	// with getURN we obtain valid MIRIAM urn's if possible.
+    	StringBuffer results = new StringBuffer();
+    	results.append(src.getURN() + " maps to:\n");
+    	for (Xref dest : dests)
+    	        results.append("  " + dest.getURN() + "\n");
+    	
+    	return results.toString();
     }
 }
