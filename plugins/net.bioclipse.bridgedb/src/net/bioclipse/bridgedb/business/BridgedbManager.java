@@ -22,7 +22,6 @@ import org.bridgedb.DataSource;
 import org.bridgedb.IDMapper;
 import org.bridgedb.IDMapperException;
 import org.bridgedb.Xref;
-import org.bridgedb.bio.BioDataSource;
 
 public class BridgedbManager implements IBioclipseManager {
 
@@ -48,7 +47,11 @@ public class BridgedbManager implements IBioclipseManager {
     	return sourceCodes;
     }
 
-    public String map(String restService, String identifier, String source, String target) throws BioclipseException {
+    public Set<String> map(String restService, String identifier, String source) throws BioclipseException {
+    	return map(restService, identifier, source, null);
+    }
+
+    public Set<String> map(String restService, String identifier, String source, String target) throws BioclipseException {
     	logger.debug("doing stuff...");
 
     	// now we connect to the driver and create a IDMapper instance.
@@ -60,28 +63,36 @@ public class BridgedbManager implements IBioclipseManager {
 		}
 
     	// We create an Xref instance for the identifier that we want to look up.
-    	// In this case we want to look up Entrez gene 3643.
     	DataSource sourceObj = getSource(source);
     	Xref src = new Xref(identifier, sourceObj);
 
-    	// let's see if there are cross-references to Ensembl Human
-    	DataSource targetObj = getSource(target);
     	Set<Xref> dests;
-		try {
-			dests = mapper.mapID(src, targetObj);
-		} catch (IDMapperException exception) {
-			throw new BioclipseException(
-				"Error while mapping the identifier: " + exception.getMessage()
-			);
-		}
 
-    	// and print the results.
-    	// with getURN we obtain valid MIRIAM urn's if possible.
-    	StringBuffer results = new StringBuffer();
-    	results.append(src.getURN() + " maps to:\n");
+    	// let's see if there are cross-references in the target database
+    	if (target != null) {
+        	DataSource targetObj = getSource(target);
+    		try {
+    			dests = mapper.mapID(src, targetObj);
+    		} catch (IDMapperException exception) {
+    			throw new BioclipseException(
+    				"Error while mapping the identifier: " + exception.getMessage()
+    			);
+    		}
+    	} else {
+    		try {
+    			dests = mapper.mapID(src);
+    		} catch (IDMapperException exception) {
+    			throw new BioclipseException(
+    				"Error while mapping the identifier: " + exception.getMessage()
+    			);
+    		}
+    	}
+
+    	// and create a list of found, mapped URNs
+    	Set<String> results = new HashSet<String>();
     	for (Xref dest : dests)
-    	        results.append("  " + dest.getURN() + "\n");
+    	    results.add(dest.getURN());
     	
-    	return results.toString();
+    	return results;
     }
 }

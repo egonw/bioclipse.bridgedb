@@ -31,7 +31,15 @@ public interface IBridgedbManager extends IBioclipseManager {
         		"to a target database.",
         params="String restService, String identifier, String source, String target"
     )
-    public String map(String restService, String identifier, String source, String target) throws BioclipseException;
+    public Set<String> map(String restService, String identifier, String source, String target) throws BioclipseException;
+
+    @Recorded
+    @PublishedMethod(
+        methodSummary="Uses a BridgeDB REST service to map something identified into a source database " +
+        		"to any other known database.",
+        params="String restService, String identifier, String source"
+    )
+    public Set<String> map(String restService, String identifier, String source) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
