@@ -42,7 +42,8 @@ public class BridgedbManager implements IBioclipseManager {
     public Set<String> listAllSources() {
     	Set<String> sourceCodes = new HashSet<String>();
     	for (DataSource source : DataSource.getDataSources()) {
-    		sourceCodes.add(source.getSystemCode());
+    		String code = source.getSystemCode();
+    		if (code != null && code.length() > 0) sourceCodes.add(code);
     	}
     	return sourceCodes;
     }
