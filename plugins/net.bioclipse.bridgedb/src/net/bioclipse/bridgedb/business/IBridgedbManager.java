@@ -44,6 +44,13 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
+        methodSummary="Searches a BridgeDB REST service for the given query string, if the service supports searching.",
+        params="String restService, String query, int limit"
+    )
+    public Set<String> search(String restService, String query, int limit) throws BioclipseException;
+
+    @Recorded
+    @PublishedMethod(
         methodSummary="Return a BioDataSource for the given string. It throws a BioclipseException when an" +
         		" unrecognized source String is passed.",
         params="String source"

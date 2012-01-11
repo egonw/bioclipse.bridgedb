@@ -48,6 +48,24 @@ public class BridgedbManager implements IBioclipseManager {
     	return sourceCodes;
     }
 
+    public Set<String> search(String restService, String query, int limit) throws BioclipseException {
+    	logger.debug("doing stuff...");
+
+    	// now we connect to the driver and create a IDMapper instance.
+    	IDMapper mapper;
+		try {
+			mapper = BridgeDb.connect(restService);
+		} catch (IDMapperException exception) {
+			throw new BioclipseException("Could not connect to the REST service at: " + restService);
+		}
+
+		try {
+			return extractIdentifierStrings(mapper.freeSearch(query, limit));
+		} catch (IDMapperException exception) {
+			throw new BioclipseException("Could not search the REST service: " + exception);
+		}
+    }
+
     public Set<String> map(String restService, String identifier, String source) throws BioclipseException {
     	return map(restService, identifier, source, null);
     }
@@ -90,10 +108,13 @@ public class BridgedbManager implements IBioclipseManager {
     	}
 
     	// and create a list of found, mapped URNs
-    	Set<String> results = new HashSet<String>();
+    	return extractIdentifierStrings(dests);
+    }
+
+	private Set<String> extractIdentifierStrings(Set<Xref> dests) {
+		Set<String> results = new HashSet<String>();
     	for (Xref dest : dests)
     	    results.add(dest.getURN());
-    	
-    	return results;
-    }
+		return results;
+	}
 }
