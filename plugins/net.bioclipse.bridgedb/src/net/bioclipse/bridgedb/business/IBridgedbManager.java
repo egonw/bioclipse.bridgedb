@@ -59,6 +59,13 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
+        methodSummary="Guesses the data source type from the given identifire using a set of predefined patterns.",
+        params="String identifier"
+    )
+    public Set<DataSource> guessIdentifierType(String identifier) throws BioclipseException;
+
+    @Recorded
+    @PublishedMethod(
         methodSummary="List all data sources."
     )
     public Set<String> listAllSources();

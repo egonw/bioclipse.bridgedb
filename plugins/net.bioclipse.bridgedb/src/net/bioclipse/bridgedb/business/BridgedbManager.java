@@ -11,7 +11,10 @@
 package net.bioclipse.bridgedb.business;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import net.bioclipse.core.business.BioclipseException;
 import net.bioclipse.managers.business.IBioclipseManager;
@@ -19,6 +22,7 @@ import net.bioclipse.managers.business.IBioclipseManager;
 import org.apache.log4j.Logger;
 import org.bridgedb.BridgeDb;
 import org.bridgedb.DataSource;
+import org.bridgedb.DataSourcePatterns;
 import org.bridgedb.IDMapper;
 import org.bridgedb.IDMapperException;
 import org.bridgedb.Xref;
@@ -64,6 +68,17 @@ public class BridgedbManager implements IBioclipseManager {
 		} catch (IDMapperException exception) {
 			throw new BioclipseException("Could not search the REST service: " + exception);
 		}
+    }
+
+    public Set<DataSource> guessIdentifierType(String identifier) throws BioclipseException {
+    	Map<DataSource, Pattern> patterns = DataSourcePatterns.getPatterns();
+
+    	Set<DataSource> sources = new HashSet<DataSource>();
+    	for (DataSource source : patterns.keySet()) {
+    	        Matcher matcher = patterns.get(source).matcher(identifier);
+    	        if (matcher.matches()) sources.add(source);
+    	}
+    	return sources;
     }
 
     public Set<String> map(String restService, String identifier, String source) throws BioclipseException {
