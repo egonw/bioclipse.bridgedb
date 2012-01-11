@@ -45,7 +45,7 @@ public interface IBridgedbManager extends IBioclipseManager {
     @Recorded
     @PublishedMethod(
         methodSummary="Return a BioDataSource for the given string. It throws a BioclipseException when an" +
-        		" unrecognized source String is passes.",
+        		" unrecognized source String is passed.",
         params="String source"
     )
     public DataSource getSource(String source) throws BioclipseException;
