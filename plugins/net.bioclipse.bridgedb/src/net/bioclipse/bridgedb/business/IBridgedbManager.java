@@ -21,7 +21,8 @@ import net.bioclipse.managers.business.IBioclipseManager;
 import org.bridgedb.DataSource;
 
 @PublishedClass(
-    value="BridgeDB.org support."
+    value="BridgeDB.org support.",
+    doi="10.1186/1471-2105-11-5"
 )
 public interface IBridgedbManager extends IBioclipseManager {
 
