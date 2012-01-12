@@ -132,4 +132,8 @@ public class BridgedbManager implements IBioclipseManager {
     	    results.add(dest.getURN());
 		return results;
 	}
+
+	public Xref xref(String identifier, String source) throws BioclipseException {
+		return new Xref(identifier, getSource(source));
+	}
 }

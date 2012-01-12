@@ -19,6 +19,7 @@ import net.bioclipse.core.business.BioclipseException;
 import net.bioclipse.managers.business.IBioclipseManager;
 
 import org.bridgedb.DataSource;
+import org.bridgedb.Xref;
 
 @PublishedClass(
     value="BridgeDB.org support.",
@@ -52,7 +53,8 @@ public interface IBridgedbManager extends IBioclipseManager {
     @Recorded
     @PublishedMethod(
         methodSummary="Return a BioDataSource for the given string. It throws a BioclipseException when an" +
-        		" unrecognized source String is passed.",
+        		" unrecognized source String is passed.  Use listAllSources() to" +
+        		" get a list of source codes.",
         params="String source"
     )
     public DataSource getSource(String source) throws BioclipseException;
@@ -69,5 +71,13 @@ public interface IBridgedbManager extends IBioclipseManager {
         methodSummary="List all data sources."
     )
     public Set<String> listAllSources();
+
+    @Recorded
+    @PublishedMethod(
+        methodSummary="Creates a BridgeBD Xref object from the given identifier and source. Use listAllSources() to" +
+        		" get a list of source codes.",
+        params="String identifier, String source"
+    )
+    public Xref xref(String identifier, String source);
 
 }
