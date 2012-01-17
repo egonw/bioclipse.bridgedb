@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="net.bioclipse.bridgedb.tests_feature"
+      label="Bioclipse-BridgeDB Test Feature"
+      version="2.5.0.qualifier"
+      provider-name="The Bioclipse Team"
+      plugin="net.bioclipse.bridgedb.tests">
+
+   <requires>
+      <import feature="net.bioclipse.core_feature" />
+      <import feature="net.bioclipse.bridgedb_feature" />
+   </requires>
+
+   <plugin
+         id="net.bioclipse.bridgedb.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="net.bioclipse.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
