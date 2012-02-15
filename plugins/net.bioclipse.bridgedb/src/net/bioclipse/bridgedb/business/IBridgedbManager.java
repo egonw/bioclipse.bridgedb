@@ -19,6 +19,7 @@ import net.bioclipse.core.business.BioclipseException;
 import net.bioclipse.managers.business.IBioclipseManager;
 
 import org.bridgedb.DataSource;
+import org.bridgedb.IDMapper;
 import org.bridgedb.Xref;
 
 @PublishedClass(
@@ -52,6 +53,13 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
+        methodSummary="Searches a local BridgeDB instance for the given query string.",
+        params="IDMapper database, String query, int limit"
+    )
+    public Set<String> search(IDMapper database, String query, int limit) throws BioclipseException;
+
+    @Recorded
+    @PublishedMethod(
         methodSummary="Return a BioDataSource for the given string. It throws a BioclipseException when an" +
         		" unrecognized source String is passed.  Use listAllSources() to" +
         		" get a list of source codes.",
@@ -79,5 +87,11 @@ public interface IBridgedbManager extends IBioclipseManager {
         params="String identifier, String source"
     )
     public Xref xref(String identifier, String source);
-
+    
+    @Recorded
+    @PublishedMethod(
+        methodSummary="Loads a BridgeDB Rdb database from a file location.",
+        params="String location"
+    )
+    public IDMapper loadRelationalDatabase(String location) throws BioclipseException;
 }

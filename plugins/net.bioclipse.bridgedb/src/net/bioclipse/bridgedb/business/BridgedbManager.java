@@ -63,8 +63,14 @@ public class BridgedbManager implements IBioclipseManager {
 			throw new BioclipseException("Could not connect to the REST service at: " + restService);
 		}
 
+		return search(mapper, query, limit);
+    }
+
+    public Set<String> search(IDMapper database, String query, int limit) throws BioclipseException {
+    	logger.debug("doing stuff...");
+
 		try {
-			return extractIdentifierStrings(mapper.freeSearch(query, limit));
+			return extractIdentifierStrings(database.freeSearch(query, limit));
 		} catch (IDMapperException exception) {
 			throw new BioclipseException("Could not search the REST service: " + exception);
 		}
@@ -135,5 +141,18 @@ public class BridgedbManager implements IBioclipseManager {
 
 	public Xref xref(String identifier, String source) throws BioclipseException {
 		return new Xref(identifier, getSource(source));
+	}
+
+	public IDMapper loadRelationalDatabase(String location) throws BioclipseException {
+		try {
+			Class.forName ("org.bridgedb.rdb.IDMapperRdb");
+		} catch (ClassNotFoundException exception) {
+			throw new BioclipseException("Could not load the IDMapperRdb driver.", exception);
+		}
+		try {
+			return BridgeDb.connect("idmapper-pgdb:" + location);
+		} catch (IDMapperException exception) {
+			throw new BioclipseException("Could not the database at this location: " + location, exception);
+		}
 	}
 }

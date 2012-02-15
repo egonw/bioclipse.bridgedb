@@ -17,5 +17,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  jar/org.bridgedb.bio.jar,
  jar/org.bridgedb.jar,
- jar/org.bridgedb.webservice.bridgerest.jar
+ jar/org.bridgedb.webservice.bridgerest.jar,
+ jar/org.bridgedb.rdb.jar,
+ jar/derby.jar
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
