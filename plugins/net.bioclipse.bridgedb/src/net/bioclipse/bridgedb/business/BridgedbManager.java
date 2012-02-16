@@ -91,6 +91,10 @@ public class BridgedbManager implements IBioclipseManager {
     	return map(restService, identifier, source, null);
     }
 
+    public Set<String> map(IDMapper database, String identifier, String source) throws BioclipseException {
+    	return map(database, identifier, source, null);
+    }
+
     public Set<String> map(String restService, String identifier, String source, String target) throws BioclipseException {
     	logger.debug("doing stuff...");
 
@@ -101,7 +105,11 @@ public class BridgedbManager implements IBioclipseManager {
 		} catch (IDMapperException exception) {
 			throw new BioclipseException("Could not connect to the REST service at: " + restService);
 		}
+		
+		return map(mapper, identifier, source, target);
+    }
 
+    public Set<String> map(IDMapper database, String identifier, String source, String target) throws BioclipseException {
     	// We create an Xref instance for the identifier that we want to look up.
     	DataSource sourceObj = getSource(source);
     	Xref src = new Xref(identifier, sourceObj);
@@ -112,7 +120,7 @@ public class BridgedbManager implements IBioclipseManager {
     	if (target != null) {
         	DataSource targetObj = getSource(target);
     		try {
-    			dests = mapper.mapID(src, targetObj);
+    			dests = database.mapID(src, targetObj);
     		} catch (IDMapperException exception) {
     			throw new BioclipseException(
     				"Error while mapping the identifier: " + exception.getMessage()
@@ -120,7 +128,7 @@ public class BridgedbManager implements IBioclipseManager {
     		}
     	} else {
     		try {
-    			dests = mapper.mapID(src);
+    			dests = database.mapID(src);
     		} catch (IDMapperException exception) {
     			throw new BioclipseException(
     				"Error while mapping the identifier: " + exception.getMessage()

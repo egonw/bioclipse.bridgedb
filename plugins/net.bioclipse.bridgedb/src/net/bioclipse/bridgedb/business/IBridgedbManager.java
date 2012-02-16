@@ -46,6 +46,22 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
+        methodSummary="Uses a local BridgeDB database service to map something identified into a source database " +
+        		"to a target database.",
+        params="IDMapper database, String identifier, String source, String target"
+    )
+    public Set<String> map(IDMapper database, String identifier, String source, String target) throws BioclipseException;
+
+    @Recorded
+    @PublishedMethod(
+        methodSummary="Uses a local BridgeDB database to map something identified into a source database " +
+        		"to any other known database.",
+        params="IDMapper database, String identifier, String source"
+    )
+    public Set<String> map(IDMapper database, String identifier, String source) throws BioclipseException;
+
+    @Recorded
+    @PublishedMethod(
         methodSummary="Searches a BridgeDB REST service for the given query string, if the service supports searching.",
         params="String restService, String query, int limit"
     )
