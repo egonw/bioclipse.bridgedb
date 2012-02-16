@@ -147,6 +147,17 @@ public class BridgedbManager implements IBioclipseManager {
 		return results;
 	}
 
+	public Xref xref(String sourcedIdentifier) throws BioclipseException {
+		int index = sourcedIdentifier.indexOf(':'); 
+		if (index < 0) throw new BioclipseException("Unexpected format. Use something like \"Wi:Aspirin\".");
+
+		String identifier = sourcedIdentifier.substring(index + 1);
+		String source = sourcedIdentifier.substring(0, index);
+		System.out.println(identifier);
+		System.out.println(source);
+		return new Xref(identifier, getSource(source));
+	}
+
 	public Xref xref(String identifier, String source) throws BioclipseException {
 		return new Xref(identifier, getSource(source));
 	}

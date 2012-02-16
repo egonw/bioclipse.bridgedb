@@ -99,10 +99,18 @@ public interface IBridgedbManager extends IBioclipseManager {
     @Recorded
     @PublishedMethod(
         methodSummary="Creates a BridgeBD Xref object from the given identifier and source. Use listAllSources() to" +
-        		" get a list of source codes.",
+        		" get a list of source codes. An example is [\"3643\", \"L\"].",
         params="String identifier, String source"
     )
     public Xref xref(String identifier, String source);
+    
+    @Recorded
+    @PublishedMethod(
+        methodSummary="Creates a BridgeBD Xref object from the given identifier and source. An example " +
+        		"is \"Wi:Aspirin\".",
+        params="String sourcedIdentifier"
+    )
+    public Xref xref(String sourcedIdentifier);
     
     @Recorded
     @PublishedMethod(
