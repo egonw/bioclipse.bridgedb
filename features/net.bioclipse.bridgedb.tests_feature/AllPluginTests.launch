@@ -17,7 +17,7 @@
 <booleanAttribute key="includeOptional" value="true"/>
 <stringAttribute key="location" value="${workspace_loc}/../junit-workspace"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/net.bioclipse.rdf.completeRepoTest/src/net/bioclipse/bridgedb/tests/AllBridgedbManagerPluginTests.java"/>
+<listEntry value="/net.bioclipse.bridgedb.tests/src/net/bioclipse/bridgedb/tests/AllBridgedbManagerPluginTests.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
