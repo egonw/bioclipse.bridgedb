@@ -7,12 +7,19 @@
       plugin="net.bioclipse.bridgedb.tests">
 
    <requires>
-      <import feature="net.bioclipse.core_feature" />
-      <import feature="net.bioclipse.bridgedb_feature" />
+      <import feature="net.bioclipse.core_feature" version="2.5.0.qualifier" />
+      <import feature="net.bioclipse.bridgedb_feature" version="2.5.0.qualifier" />
    </requires>
 
    <plugin
          id="net.bioclipse.bridgedb.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="net.bioclipse.core.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"
