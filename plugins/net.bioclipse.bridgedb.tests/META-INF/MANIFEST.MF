@@ -21,3 +21,5 @@ Import-Package: org.apache.log4j,
  org.junit.runners,
  org.hamcrest
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Export-Package: net.bioclipse.bridgedb.tests
