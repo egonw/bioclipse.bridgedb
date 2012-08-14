@@ -37,7 +37,6 @@
 <setEntry value="net.bioclipse.rdf.test_feature:default"/>
 <setEntry value="net.bioclipse.rdf_feature:default"/>
 <setEntry value="net.bioclipse.core_feature:default"/>
-<setEntry value="net.bioclipse.core.tests_feature:default"/>
 <setEntry value="org.eclipse.equinox.p2.user.ui:default"/>
 <setEntry value="org.eclipse.rcp:default"/>
 </setAttribute>
