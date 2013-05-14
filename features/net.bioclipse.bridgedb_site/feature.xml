@@ -20,10 +20,6 @@ et al.
 The BridgeDB library code has the Apache 2.0 License.
    </license>
 
-   <url>
-      <discovery label="BridgeDB website" url="http://www.bridgedb.org/"/>
-   </url>
-
    <includes
          id="net.bioclipse.bridgedb_feature"
          version="0.0.0"/>
