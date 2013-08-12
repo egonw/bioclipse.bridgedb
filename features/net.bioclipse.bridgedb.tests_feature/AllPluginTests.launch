@@ -34,13 +34,12 @@
 <stringAttribute key="product" value="net.bioclipse.ui.product"/>
 <booleanAttribute key="run_in_ui_thread" value="true"/>
 <setAttribute key="selected_features">
-<setEntry value="net.bioclipse.bridgedb.test_feature:default"/>
+<setEntry value="net.bioclipse.advanced_feature:default"/>
+<setEntry value="net.bioclipse.bridgedb.tests_feature:default"/>
+<setEntry value="net.bioclipse.bridgedb_feature:default"/>
 <setEntry value="net.bioclipse.core_feature:default"/>
-<setEntry value="net.bioclipse.core.tests_feature:default"/>
-<setEntry value="org.eclipse.equinox.p2.user.ui:default"/>
-<setEntry value="org.eclipse.rcp:default"/>
 </setAttribute>
-<booleanAttribute key="show_selected_only" value="true"/>
+<booleanAttribute key="show_selected_only" value="false"/>
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="true"/>
 <booleanAttribute key="useDefaultConfig" value="true"/>
