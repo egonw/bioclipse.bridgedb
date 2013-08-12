@@ -18,12 +18,12 @@ public class JavaBridgedbManagerPluginTest
     extends AbstractBridgedbManagerPluginTest {
 
     @BeforeClass public static void setup() {
-        managerNamespace = net.bioclipse.bridgedb.Activator.getDefault()
+    	bridgedb = net.bioclipse.bridgedb.Activator.getDefault()
             .getJavaBridgedbManager();
     }
 
 	@Override
 	public IBioclipseManager getManager() {
-		return managerNamespace;
+		return bridgedb;
 	}
 }
