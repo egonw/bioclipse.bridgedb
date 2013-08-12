@@ -2,7 +2,7 @@
 <feature
       id="net.bioclipse.bridgedb_site"
       label="Bioclipse-BridgeDB Update Site"
-      version="2.5.0.qualifier">
+      version="1.0.0">
 
    <description>
       The Bioclipse-BridgeDB plugins makes the BridgeDB library accessible in the Bioclipse scripting environment.
