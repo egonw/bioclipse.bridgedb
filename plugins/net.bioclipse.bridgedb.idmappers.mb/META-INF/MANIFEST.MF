@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BridgeDb Metabolite Mapping Database
+Bundle-SymbolicName: net.bioclipse.bridgedb.idmappers.mb; singleton:=true
+Bundle-Version: 2.5.0.qualifier
+Export-Package: net.bioclipse.bridgedb.idmappers.mb
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ net.bioclipse.bridgedb
+Import-Package: org.apache.log4j
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

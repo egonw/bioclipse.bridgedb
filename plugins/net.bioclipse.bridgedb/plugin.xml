@@ -10,12 +10,5 @@
             id="net.bioclipse.bridgedb.business.BridgedbManager">
       </scriptContribution>
    </extension>
-   <extension
-         point="net.bioclipse.bridgedb.mappingdatabase">
-      <itemType
-            class="net.bioclipse.bridgedb.idmappers.MetaboliteIDMapperProvider"
-            id="net.bioclipse.bridgedb.idmappers.metabolite">
-      </itemType>
-   </extension>
 
 </plugin>
