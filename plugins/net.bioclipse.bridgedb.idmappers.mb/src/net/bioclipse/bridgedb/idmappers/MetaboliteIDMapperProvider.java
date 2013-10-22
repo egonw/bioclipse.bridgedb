@@ -15,4 +15,9 @@ public class MetaboliteIDMapperProvider implements IIDMapperProvider {
 		return null;
 	}
 
+	@Override
+	public String getName() {
+		return "Metabolite ID Mapping Database";
+	}
+
 }

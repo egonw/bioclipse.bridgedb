@@ -12,7 +12,9 @@ package net.bioclipse.bridgedb;
 import org.bridgedb.IDMapper;
 
 public interface IIDMapperProvider {
-	
+
+	public String getName();
+
 	public IDMapper loadIDMapper();
 
 }

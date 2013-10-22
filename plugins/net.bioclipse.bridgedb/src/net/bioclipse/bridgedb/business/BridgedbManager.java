@@ -17,6 +17,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.bioclipse.bridgedb.IIDMapperProvider;
 import net.bioclipse.core.business.BioclipseException;
 import net.bioclipse.managers.business.IBioclipseManager;
 
@@ -77,16 +78,20 @@ public class BridgedbManager implements IBioclipseManager {
     	Set<String> contributors = new HashSet<String>();
     	for (int i = 0; i < extensions.length; i++) {
     		IExtension ext = extensions[i];
-    		IConfigurationElement[] ce = 
-    				ext.getConfigurationElements();
+    		IConfigurationElement[] ce = ext.getConfigurationElements();
     		for (int j = 0; j < ce.length; j++) {
     			Object obj;
-				try {
-					obj = ce[j].createExecutableExtension("class");
-	    			contributors.add(obj.getClass().getName());
-				} catch (CoreException e) {
-					logger.error("Could not load extension point: " + ce[j].getClass().getName());
-				}
+    			try {
+    				obj = ce[j].createExecutableExtension("class");
+    				if (obj instanceof IIDMapperProvider) {
+    					IIDMapperProvider mapper = (IIDMapperProvider)obj;
+    					contributors.add(mapper.getName());
+    				} else {
+    					logger.error("Extension point is not an identifier mapper");
+    				}
+    			} catch (CoreException e) {
+    				logger.error("Could not load extension point: " + ce[j].getClass().getName());
+    			}
     		}
     	}
     	return contributors;
