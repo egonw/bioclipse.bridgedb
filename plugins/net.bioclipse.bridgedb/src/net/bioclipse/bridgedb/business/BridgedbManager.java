@@ -67,6 +67,37 @@ public class BridgedbManager implements IBioclipseManager {
     	return organisms;
     }
 
+    public IDMapper getIDMapper(String provider) {
+    	IExtensionRegistry reg = Platform.getExtensionRegistry();
+    	IExtensionPoint ep = reg.getExtensionPoint("net.bioclipse.bridgedb.mappingdatabase");
+    	if (ep == null) {
+    		logger.debug("No BridgeDb mapping databases found.");
+    		return null;
+    	}
+    	IExtension[] extensions = ep.getExtensions();
+    	for (int i = 0; i < extensions.length; i++) {
+    		IExtension ext = extensions[i];
+    		IConfigurationElement[] ce = ext.getConfigurationElements();
+    		for (int j = 0; j < ce.length; j++) {
+    			Object obj;
+    			try {
+    				obj = ce[j].createExecutableExtension("class");
+    				if (obj instanceof IIDMapperProvider) {
+    					IIDMapperProvider mapper = (IIDMapperProvider)obj;
+    					if (mapper.getName().equals(provider)) {
+    						return mapper.loadIDMapper();
+    					}
+    				} else {
+    					logger.error("Extension point is not an identifier mapper");
+    				}
+    			} catch (CoreException e) {
+    				logger.error("Could not load extension point: " + ce[j].getClass().getName());
+    			}
+    		}
+    	}
+    	return null;
+    }
+    
     public Set<String> listIDMapperProviders() {
     	IExtensionRegistry reg = Platform.getExtensionRegistry();
     	IExtensionPoint ep = reg.getExtensionPoint("net.bioclipse.bridgedb.mappingdatabase");

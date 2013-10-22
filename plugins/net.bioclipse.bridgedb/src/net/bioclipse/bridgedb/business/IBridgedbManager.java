@@ -111,6 +111,12 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
+        methodSummary="Get an IDMapper from a gven provider."
+    )
+    public IDMapper getIDMapper(String provider);
+    
+    @Recorded
+    @PublishedMethod(
         methodSummary="Creates a BridgeBD Xref object from the given identifier and source. Use listAllSources() to" +
         		" get a list of source codes. An example is [\"3643\", \"L\"].",
         params="String identifier, String source"
