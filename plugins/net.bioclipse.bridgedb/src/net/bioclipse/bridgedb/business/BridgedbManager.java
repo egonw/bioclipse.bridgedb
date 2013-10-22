@@ -26,6 +26,13 @@ import org.bridgedb.DataSourcePatterns;
 import org.bridgedb.IDMapper;
 import org.bridgedb.IDMapperException;
 import org.bridgedb.Xref;
+import org.bridgedb.bio.Organism;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 
 public class BridgedbManager implements IBioclipseManager {
 
@@ -50,6 +57,12 @@ public class BridgedbManager implements IBioclipseManager {
     		if (code != null && code.length() > 0) sourceCodes.add(code);
     	}
     	return sourceCodes;
+    }
+
+    public Set<Organism> listAllOrganisms() {
+    	Set<Organism> organisms = new HashSet<Organism>();
+    	for (Organism organism : Organism.values()) organisms.add(organism);
+    	return organisms;
     }
 
     public Set<String> search(String restService, String query, int limit) throws BioclipseException {

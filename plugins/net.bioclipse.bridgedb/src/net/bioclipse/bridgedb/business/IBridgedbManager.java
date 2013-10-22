@@ -21,6 +21,7 @@ import net.bioclipse.managers.business.IBioclipseManager;
 import org.bridgedb.DataSource;
 import org.bridgedb.IDMapper;
 import org.bridgedb.Xref;
+import org.bridgedb.bio.Organism;
 
 @PublishedClass(
     value="BridgeDB.org support.",
@@ -95,6 +96,12 @@ public interface IBridgedbManager extends IBioclipseManager {
         methodSummary="List all data sources."
     )
     public Set<String> listAllSources();
+
+    @Recorded
+    @PublishedMethod(
+        methodSummary="List all organisms."
+    )
+    public Set<Organism> listAllOrganisms();
 
     @Recorded
     @PublishedMethod(
