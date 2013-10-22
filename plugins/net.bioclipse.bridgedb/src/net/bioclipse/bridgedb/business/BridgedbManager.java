@@ -10,6 +10,7 @@
  ******************************************************************************/
 package net.bioclipse.bridgedb.business;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -63,6 +64,32 @@ public class BridgedbManager implements IBioclipseManager {
     	Set<Organism> organisms = new HashSet<Organism>();
     	for (Organism organism : Organism.values()) organisms.add(organism);
     	return organisms;
+    }
+
+    public Set<String> listIDMapperProviders() {
+    	IExtensionRegistry reg = Platform.getExtensionRegistry();
+    	IExtensionPoint ep = reg.getExtensionPoint("net.bioclipse.bridgedb.mappingdatabase");
+    	if (ep == null) {
+    		logger.debug("No BridgeDb mapping databases found.");
+    		return Collections.emptySet();
+    	}
+    	IExtension[] extensions = ep.getExtensions();
+    	Set<String> contributors = new HashSet<String>();
+    	for (int i = 0; i < extensions.length; i++) {
+    		IExtension ext = extensions[i];
+    		IConfigurationElement[] ce = 
+    				ext.getConfigurationElements();
+    		for (int j = 0; j < ce.length; j++) {
+    			Object obj;
+				try {
+					obj = ce[j].createExecutableExtension("class");
+	    			contributors.add(obj.getClass().getName());
+				} catch (CoreException e) {
+					logger.error("Could not load extension point: " + ce[j].getClass().getName());
+				}
+    		}
+    	}
+    	return contributors;
     }
 
     public Set<String> search(String restService, String query, int limit) throws BioclipseException {
