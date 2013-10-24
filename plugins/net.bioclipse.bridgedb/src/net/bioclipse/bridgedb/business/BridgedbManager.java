@@ -233,8 +233,6 @@ public class BridgedbManager implements IBioclipseManager {
 
 		String identifier = sourcedIdentifier.substring(index + 1);
 		String source = sourcedIdentifier.substring(0, index);
-		System.out.println(identifier);
-		System.out.println(source);
 		return new Xref(identifier, getSource(source));
 	}
 
