@@ -51,6 +51,10 @@ public class BridgedbManager implements IBioclipseManager {
     public DataSource getSource(String source) throws BioclipseException {
     	return DataSource.getBySystemCode(source);
     }
+    
+    public DataSource getSourceFromName(String name) throws BioclipseException {
+    	return DataSource.getByFullName(name);
+    }
 
     public Set<String> listAllSources() {
     	Set<String> sourceCodes = new HashSet<String>();

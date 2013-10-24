@@ -77,12 +77,20 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Return a BioDataSource for the given string. It throws a BioclipseException when an" +
+        methodSummary="Return a BioDataSource for the given system code. It throws a BioclipseException when an" +
         		" unrecognized source String is passed.  Use listAllSources() to" +
         		" get a list of source codes.",
-        params="String source"
+        params="String code"
     )
-    public DataSource getSource(String source) throws BioclipseException;
+    public DataSource getSource(String code) throws BioclipseException;
+
+    @Recorded
+    @PublishedMethod(
+        methodSummary="Return a BioDataSource for the given name. It throws a BioclipseException when an" +
+        		" unrecognized name String is passed.",
+        params="String name"
+    )
+    public DataSource getSourceFromName(String name) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
