@@ -119,7 +119,8 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Get an IDMapper from a gven provider."
+        methodSummary="Get an IDMapper from a gven provider.",
+        params="String provider"
     )
     public IDMapper getIDMapper(String provider);
     
