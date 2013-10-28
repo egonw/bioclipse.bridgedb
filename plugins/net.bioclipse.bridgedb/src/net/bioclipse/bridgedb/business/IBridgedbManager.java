@@ -10,7 +10,7 @@
  ******************************************************************************/
 package net.bioclipse.bridgedb.business;
 
-import java.util.Set;
+import java.util.List;
 
 import net.bioclipse.core.PublishedClass;
 import net.bioclipse.core.PublishedMethod;
@@ -35,7 +35,7 @@ public interface IBridgedbManager extends IBioclipseManager {
         		"to a target database.",
         params="String restService, String identifier, String source, String target"
     )
-    public Set<String> map(String restService, String identifier, String source, String target) throws BioclipseException;
+    public List<String> map(String restService, String identifier, String source, String target) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
@@ -43,7 +43,7 @@ public interface IBridgedbManager extends IBioclipseManager {
         		"to any other known database.",
         params="String restService, String identifier, String source"
     )
-    public Set<String> map(String restService, String identifier, String source) throws BioclipseException;
+    public List<String> map(String restService, String identifier, String source) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
@@ -51,7 +51,7 @@ public interface IBridgedbManager extends IBioclipseManager {
         		"to a target database.",
         params="IDMapper database, String identifier, String source, String target"
     )
-    public Set<String> map(IDMapper database, String identifier, String source, String target) throws BioclipseException;
+    public List<String> map(IDMapper database, String identifier, String source, String target) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
@@ -59,21 +59,21 @@ public interface IBridgedbManager extends IBioclipseManager {
         		"to any other known database.",
         params="IDMapper database, String identifier, String source"
     )
-    public Set<String> map(IDMapper database, String identifier, String source) throws BioclipseException;
+    public List<String> map(IDMapper database, String identifier, String source) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
         methodSummary="Searches a BridgeDB REST service for the given query string, if the service supports searching.",
         params="String restService, String query, int limit"
     )
-    public Set<String> search(String restService, String query, int limit) throws BioclipseException;
+    public List<String> search(String restService, String query, int limit) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
         methodSummary="Searches a local BridgeDB instance for the given query string.",
         params="IDMapper database, String query, int limit"
     )
-    public Set<String> search(IDMapper database, String query, int limit) throws BioclipseException;
+    public List<String> search(IDMapper database, String query, int limit) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
@@ -97,25 +97,25 @@ public interface IBridgedbManager extends IBioclipseManager {
         methodSummary="Guesses the data source type from the given identifire using a set of predefined patterns.",
         params="String identifier"
     )
-    public Set<DataSource> guessIdentifierType(String identifier) throws BioclipseException;
+    public List<DataSource> guessIdentifierType(String identifier) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
         methodSummary="List all data sources."
     )
-    public Set<String> listAllSources();
+    public List<String> listAllSources();
 
     @Recorded
     @PublishedMethod(
         methodSummary="List all organisms."
     )
-    public Set<Organism> listAllOrganisms();
+    public List<Organism> listAllOrganisms();
 
     @Recorded
     @PublishedMethod(
         methodSummary="List all IDMapper providers."
     )
-    public Set<String> listIDMapperProviders();
+    public List<String> listIDMapperProviders();
 
     @Recorded
     @PublishedMethod(

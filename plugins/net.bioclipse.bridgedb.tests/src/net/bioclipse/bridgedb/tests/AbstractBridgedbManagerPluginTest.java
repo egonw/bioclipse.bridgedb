@@ -10,7 +10,7 @@
  ******************************************************************************/
 package net.bioclipse.bridgedb.tests;
 
-import java.util.Set;
+import java.util.List;
 
 import net.bioclipse.bridgedb.business.IBridgedbManager;
 import net.bioclipse.core.business.BioclipseException;
@@ -28,7 +28,7 @@ extends AbstractManagerTest {
     
     @Test
     public void testMap() throws BioclipseException {
-    	Set<String> mappedIDs = bridgedb.map("idmapper-bridgerest:http://webservice.bridgedb.org/Human", "3643", "L");
+    	List<String> mappedIDs = bridgedb.map("idmapper-bridgerest:http://webservice.bridgedb.org/Human", "3643", "L");
     	Assert.assertNotNull(mappedIDs);
     	Assert.assertNotSame(0, mappedIDs.size());
     	Assert.assertTrue(mappedIDs.contains("urn:miriam:pdb:1RQQ"));

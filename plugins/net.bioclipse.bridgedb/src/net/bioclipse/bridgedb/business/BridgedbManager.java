@@ -10,8 +10,9 @@
  ******************************************************************************/
 package net.bioclipse.bridgedb.business;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -56,8 +57,8 @@ public class BridgedbManager implements IBioclipseManager {
     	return DataSource.getByFullName(name);
     }
 
-    public Set<String> listAllSources() {
-    	Set<String> sourceCodes = new HashSet<String>();
+    public List<String> listAllSources() {
+    	List<String> sourceCodes = new ArrayList<String>();
     	for (DataSource source : DataSource.getDataSources()) {
     		String code = source.getSystemCode();
     		if (code != null && code.length() > 0) sourceCodes.add(code);
@@ -65,8 +66,8 @@ public class BridgedbManager implements IBioclipseManager {
     	return sourceCodes;
     }
 
-    public Set<Organism> listAllOrganisms() {
-    	Set<Organism> organisms = new HashSet<Organism>();
+    public List<Organism> listAllOrganisms() {
+    	List<Organism> organisms = new ArrayList<Organism>();
     	for (Organism organism : Organism.values()) organisms.add(organism);
     	return organisms;
     }
@@ -102,15 +103,15 @@ public class BridgedbManager implements IBioclipseManager {
     	return null;
     }
     
-    public Set<String> listIDMapperProviders() {
+    public List<String> listIDMapperProviders() {
     	IExtensionRegistry reg = Platform.getExtensionRegistry();
     	IExtensionPoint ep = reg.getExtensionPoint("net.bioclipse.bridgedb.mappingdatabase");
     	if (ep == null) {
     		logger.debug("No BridgeDb mapping databases found.");
-    		return Collections.emptySet();
+    		return Collections.emptyList();
     	}
     	IExtension[] extensions = ep.getExtensions();
-    	Set<String> contributors = new HashSet<String>();
+    	List<String> contributors = new ArrayList<String>();
     	for (int i = 0; i < extensions.length; i++) {
     		IExtension ext = extensions[i];
     		IConfigurationElement[] ce = ext.getConfigurationElements();
@@ -132,7 +133,7 @@ public class BridgedbManager implements IBioclipseManager {
     	return contributors;
     }
 
-    public Set<String> search(String restService, String query, int limit) throws BioclipseException {
+    public List<String> search(String restService, String query, int limit) throws BioclipseException {
     	logger.debug("doing stuff...");
 
     	// now we connect to the driver and create a IDMapper instance.
@@ -146,7 +147,7 @@ public class BridgedbManager implements IBioclipseManager {
 		return search(mapper, query, limit);
     }
 
-    public Set<String> search(IDMapper database, String query, int limit) throws BioclipseException {
+    public List<String> search(IDMapper database, String query, int limit) throws BioclipseException {
     	logger.debug("doing stuff...");
 
 		try {
@@ -156,10 +157,10 @@ public class BridgedbManager implements IBioclipseManager {
 		}
     }
 
-    public Set<DataSource> guessIdentifierType(String identifier) throws BioclipseException {
+    public List<DataSource> guessIdentifierType(String identifier) throws BioclipseException {
     	Map<DataSource, Pattern> patterns = DataSourcePatterns.getPatterns();
 
-    	Set<DataSource> sources = new HashSet<DataSource>();
+    	List<DataSource> sources = new ArrayList<DataSource>();
     	for (DataSource source : patterns.keySet()) {
     	        Matcher matcher = patterns.get(source).matcher(identifier);
     	        if (matcher.matches()) sources.add(source);
@@ -167,15 +168,15 @@ public class BridgedbManager implements IBioclipseManager {
     	return sources;
     }
 
-    public Set<String> map(String restService, String identifier, String source) throws BioclipseException {
+    public List<String> map(String restService, String identifier, String source) throws BioclipseException {
     	return map(restService, identifier, source, null);
     }
 
-    public Set<String> map(IDMapper database, String identifier, String source) throws BioclipseException {
+    public List<String> map(IDMapper database, String identifier, String source) throws BioclipseException {
     	return map(database, identifier, source, null);
     }
 
-    public Set<String> map(String restService, String identifier, String source, String target) throws BioclipseException {
+    public List<String> map(String restService, String identifier, String source, String target) throws BioclipseException {
     	logger.debug("doing stuff...");
 
     	// now we connect to the driver and create a IDMapper instance.
@@ -189,7 +190,7 @@ public class BridgedbManager implements IBioclipseManager {
 		return map(mapper, identifier, source, target);
     }
 
-    public Set<String> map(IDMapper database, String identifier, String source, String target) throws BioclipseException {
+    public List<String> map(IDMapper database, String identifier, String source, String target) throws BioclipseException {
     	// We create an Xref instance for the identifier that we want to look up.
     	DataSource sourceObj = getSource(source);
     	Xref src = new Xref(identifier, sourceObj);
@@ -220,8 +221,8 @@ public class BridgedbManager implements IBioclipseManager {
     	return extractIdentifierStrings(dests);
     }
 
-	private Set<String> extractIdentifierStrings(Set<Xref> dests) {
-		Set<String> results = new HashSet<String>();
+	private List<String> extractIdentifierStrings(Set<Xref> dests) {
+		List<String> results = new ArrayList<String>();
     	for (Xref dest : dests)
     	    results.add(dest.getURN());
 		return results;
