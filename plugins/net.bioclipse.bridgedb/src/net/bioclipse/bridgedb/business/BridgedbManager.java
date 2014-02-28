@@ -194,14 +194,24 @@ public class BridgedbManager implements IBioclipseManager {
     	// We create an Xref instance for the identifier that we want to look up.
     	DataSource sourceObj = getSource(source);
     	Xref src = new Xref(identifier, sourceObj);
+    	Set<Xref> dests = map(database, src, target);
 
+    	// and create a list of found, mapped URNs
+    	return extractIdentifierStrings(dests);
+    }
+
+    public Set<Xref> map(IDMapper database, Xref source) throws BioclipseException {
+    	return map(database, source, null);
+    }
+
+    public Set<Xref> map(IDMapper database, Xref source, String target) throws BioclipseException {
     	Set<Xref> dests;
 
     	// let's see if there are cross-references in the target database
     	if (target != null) {
         	DataSource targetObj = getSource(target);
     		try {
-    			dests = database.mapID(src, targetObj);
+    			dests = database.mapID(source, targetObj);
     		} catch (IDMapperException exception) {
     			throw new BioclipseException(
     				"Error while mapping the identifier: " + exception.getMessage()
@@ -209,7 +219,7 @@ public class BridgedbManager implements IBioclipseManager {
     		}
     	} else {
     		try {
-    			dests = database.mapID(src);
+    			dests = database.mapID(source);
     		} catch (IDMapperException exception) {
     			throw new BioclipseException(
     				"Error while mapping the identifier: " + exception.getMessage()
@@ -218,10 +228,10 @@ public class BridgedbManager implements IBioclipseManager {
     	}
 
     	// and create a list of found, mapped URNs
-    	return extractIdentifierStrings(dests);
+    	return Collections.unmodifiableSet(dests);
     }
 
-	private List<String> extractIdentifierStrings(Set<Xref> dests) {
+    private List<String> extractIdentifierStrings(Set<Xref> dests) {
 		List<String> results = new ArrayList<String>();
     	for (Xref dest : dests)
     	    results.add(dest.getURN());

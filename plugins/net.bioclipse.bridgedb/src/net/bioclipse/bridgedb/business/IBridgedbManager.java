@@ -11,6 +11,7 @@
 package net.bioclipse.bridgedb.business;
 
 import java.util.List;
+import java.util.Set;
 
 import net.bioclipse.core.PublishedClass;
 import net.bioclipse.core.PublishedMethod;
@@ -60,6 +61,22 @@ public interface IBridgedbManager extends IBioclipseManager {
         params="IDMapper database, String identifier, String source"
     )
     public List<String> map(IDMapper database, String identifier, String source) throws BioclipseException;
+
+    @Recorded
+    @PublishedMethod(
+        methodSummary="Uses a local BridgeDB database to map something identified into a source database " +
+        		"to any other known database. It returns a Set of Xref objects.",
+        params="IDMapper database, Xref source"
+    )
+    public Set<Xref> map(IDMapper database, Xref source) throws BioclipseException;
+
+    @Recorded
+    @PublishedMethod(
+        methodSummary="Uses a local BridgeDB database service to map something identified into a source database " +
+        		"to a target database.",
+        params="IDMapper database, Xref source, String target"
+    )
+    public Set<String> map(IDMapper database, Xref source, String target) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
