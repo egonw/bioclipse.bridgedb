@@ -23,4 +23,3 @@ Bundle-ClassPath: .,
  jar/org.bridgedb.webservice.bridgerest.jar,
  jar/org.bridgedb.rdb.jar,
  jar/derby.jar
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
