@@ -23,7 +23,7 @@ public class MetaboliteIDMapperProvider implements IIDMapperProvider {
 	public IDMapper loadIDMapper() {
 		try {
 			// dirty trick: use a temp file
-			String dataFile = "metabolites_111203.bridge";
+			String dataFile = "metabolites_20131122.bridge";
 			File tmpFile = File.createTempFile(dataFile, ".bridge");
 			System.out.println(tmpFile.getAbsolutePath());
 			InputStream stream = MetaboliteIDMapperProvider.class.getResourceAsStream(
