@@ -3,6 +3,7 @@ package net.bioclipse.bridgedb.idmappers;
 import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.zip.GZIPInputStream;
 
 import net.bioclipse.bridgedb.IIDMapperProvider;
 
@@ -23,11 +24,13 @@ public class MetaboliteIDMapperProvider implements IIDMapperProvider {
 	public IDMapper loadIDMapper() {
 		try {
 			// dirty trick: use a temp file
-			String dataFile = "metabolites_20131122.bridge";
+			String dataFile = "metabolites_20140322.bridge.gz";
 			File tmpFile = File.createTempFile(dataFile, ".bridge");
 			System.out.println(tmpFile.getAbsolutePath());
-			InputStream stream = MetaboliteIDMapperProvider.class.getResourceAsStream(
-				"/data/" + dataFile
+			InputStream stream = new GZIPInputStream(
+				MetaboliteIDMapperProvider.class.getResourceAsStream(
+				    "/data/" + dataFile
+				)
 			);
 			System.out.println("stream: " + stream);
 			System.out.println("path: " + tmpFile.toPath());
