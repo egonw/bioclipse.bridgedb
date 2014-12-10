@@ -2,7 +2,7 @@
 <feature
       id="net.bioclipse.bridgedb_feature"
       label="Bioclipse BridgeDB"
-      version="2.5.0.qualifier"
+      version="2.6.2.qualifier"
       provider-name="Egon Willighagen"
       plugin="net.bioclipse.bridgedb">
 
