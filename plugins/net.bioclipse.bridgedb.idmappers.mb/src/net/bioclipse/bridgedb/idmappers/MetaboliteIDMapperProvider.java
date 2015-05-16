@@ -24,7 +24,7 @@ public class MetaboliteIDMapperProvider implements IIDMapperProvider {
 	public IDMapper loadIDMapper() {
 		try {
 			// dirty trick: use a temp file
-			String dataFile = "metabolites_20140322.bridge.gz";
+			String dataFile = "metabolites_20150409.bridge.zip";
 			File tmpFile = File.createTempFile(dataFile, ".bridge");
 			System.out.println(tmpFile.getAbsolutePath());
 			InputStream stream = new GZIPInputStream(
