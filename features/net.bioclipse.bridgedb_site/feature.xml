@@ -24,6 +24,14 @@ The BridgeDB library code has the Apache 2.0 License.
          id="net.bioclipse.bridgedb_feature"
          version="0.0.0"/>
 
+   <includes
+         id="net.bioclipse.bridgedb.idmappers.gene.hs_feature"
+         version="0.0.0"/>
+
+   <includes
+         id="net.bioclipse.bridgedb.idmappers.mb_feature"
+         version="0.0.0"/>
+
    <requires>
       <import feature="net.bioclipse.core_feature" version="2.5.0.qualifier"/>
    </requires>
