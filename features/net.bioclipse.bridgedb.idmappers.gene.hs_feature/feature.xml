@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="net.bioclipse.bridgedb.idmappers.gene.hs_feature"
+      label="BridgeDB Gene ID mapping database (Homo sapiens)"
+      version="2.6.2.20130701"
+      provider-name="Egon Willighagen"
+      plugin="net.bioclipse.bridgedb.idmappers.gene.hs">
+
+   <description>
+      Identifier mapping database for genes, based on Ensembl.
+   </description>
+
+   <copyright>
+      Copyright (c) 2015  Egon Willighagen
+   </copyright>
+
+   <license>
+      Eclipse Public License.
+   </license>
+
+   <requires>
+      <import feature="net.bioclipse.core_feature" version="2.6.2" match="greaterOrEqual"/>
+      <import feature="net.bioclipse.bridgedb_feature" version="2.6.2" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="net.bioclipse.bridgedb.idmappers.mb"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
