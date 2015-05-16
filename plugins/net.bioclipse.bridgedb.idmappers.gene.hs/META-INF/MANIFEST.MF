@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BridgeDb Gene Mapping Database (Homo sapiens)
+Bundle-SymbolicName: net.bioclipse.bridgedb.idmappers.gene.hs; singleton:=true
+Bundle-Version: 2.6.2.20130701
+Export-Package: net.bioclipse.bridgedb.idmappers
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ net.bioclipse.bridgedb
+Import-Package: org.apache.log4j
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
