@@ -139,7 +139,7 @@ public interface IBridgedbManager extends IBioclipseManager {
         methodSummary="Get an IDMapper from a gven provider.",
         params="String provider"
     )
-    public IDMapper getIDMapper(String provider);
+    public IDMapper getIDMapper(String provider) throws BioclipseException;
     
     @Recorded
     @PublishedMethod(

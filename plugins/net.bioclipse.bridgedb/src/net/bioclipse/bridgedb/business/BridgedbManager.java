@@ -72,7 +72,7 @@ public class BridgedbManager implements IBioclipseManager {
     	return organisms;
     }
 
-    public IDMapper getIDMapper(String provider) {
+    public IDMapper getIDMapper(String provider) throws BioclipseException {
     	IExtensionRegistry reg = Platform.getExtensionRegistry();
     	IExtensionPoint ep = reg.getExtensionPoint("net.bioclipse.bridgedb.mappingdatabase");
     	if (ep == null) {
@@ -90,7 +90,16 @@ public class BridgedbManager implements IBioclipseManager {
     				if (obj instanceof IIDMapperProvider) {
     					IIDMapperProvider mapper = (IIDMapperProvider)obj;
     					if (mapper.getName().equals(provider)) {
-    						return mapper.loadIDMapper();
+    						IDMapper newMapper = null;
+    						try {
+    							newMapper = mapper.loadIDMapper();
+    						} catch (Throwable exception) {
+    							throw new BioclipseException(
+    								"Error while loading the BridgeDb file: " + exception.getMessage(),
+    								exception
+    							);
+    						}
+    						return newMapper;
     					}
     				} else {
     					logger.error("Extension point is not an identifier mapper");
