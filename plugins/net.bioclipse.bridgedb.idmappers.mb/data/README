@@ -1,3 +1,1 @@
-wget http://bridgedb.org/data/gene_database/pre-release/metabolites_20150409.bridge.zip
-unzip metabolites_20150409.bridge.zip 
-gzip -9 metabolites_20150409.bridge
+wget http://files.figshare.com/2181551/metabolites_20150717.bridge.gz
