@@ -162,7 +162,7 @@ public class BridgedbManager implements IBioclipseManager {
 		try {
 			return extractIdentifierStrings(database.freeSearch(query, limit));
 		} catch (IDMapperException exception) {
-			throw new BioclipseException("Could not search the REST service: " + exception);
+			throw new BioclipseException("Could not search in the IDMapper: " + exception);
 		}
     }
 
