@@ -56,7 +56,7 @@ public class Activator extends AbstractUIPlugin {
     	try {
 			Class.forName("org.bridgedb.webservice.bridgerest.BridgeRest");
 		} catch (ClassNotFoundException exception) {
-			throw new BioclipseException("Could not load the BridgeDB REST driver");
+			throw new BioclipseException("Could not load the BridgeDb REST driver");
 		}
     	BioDataSource.init();
 

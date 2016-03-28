@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="net.bioclipse.bridgedb.tests_feature"
-      label="Bioclipse-BridgeDB Test Feature"
+      label="Bioclipse-BridgeDb Test Feature"
       version="2.5.0.qualifier"
       provider-name="The Bioclipse Team"
       plugin="net.bioclipse.bridgedb.tests">
 
    <requires>
-      <import feature="net.bioclipse.core_feature" version="2.5.0.qualifier" />
-      <import feature="net.bioclipse.bridgedb_feature" version="2.5.0.qualifier" />
+      <import feature="net.bioclipse.core_feature" version="2.5.0.qualifier"/>
+      <import feature="net.bioclipse.bridgedb_feature" version="2.5.0.qualifier"/>
    </requires>
 
    <plugin

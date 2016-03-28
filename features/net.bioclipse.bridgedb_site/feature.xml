@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="net.bioclipse.bridgedb_site"
-      label="Bioclipse-BridgeDB Update Site"
+      label="Bioclipse-BridgeDb Update Site"
       version="1.0.0">
 
    <description>
-      The Bioclipse-BridgeDB plugins makes the BridgeDB library accessible in the Bioclipse scripting environment.
+      The Bioclipse-BridgeDb plugins makes the BridgeDb library accessible
+in the Bioclipse scripting environment.
    </description>
 
    <copyright>
-      The BridgeDB Bioclipse plugin code is copyright Egon Willighagen,
+      The BridgeDb Bioclipse plugin code is copyright Egon Willighagen,
 2011.
-The BridgeDB library code is copyrighted by Martijn van Iersel
+The BridgeDb library code is copyrighted by Martijn van Iersel
 et al.
    </copyright>
 
    <license url="">
-      The BridgeDB Bioclipse plugin code is license EPL + GPL exception, like Bioclipse itself.
-The BridgeDB library code has the Apache 2.0 License.
+      The BridgeDb Bioclipse plugin code is license EPL + GPL exception, like Bioclipse itself.
+The BridgeDb library code has the Apache 2.0 License.
    </license>
 
    <includes

@@ -24,14 +24,14 @@ import org.bridgedb.Xref;
 import org.bridgedb.bio.Organism;
 
 @PublishedClass(
-    value="BridgeDB.org support.",
+    value="BridgeDb.org support.",
     doi="10.1186/1471-2105-11-5"
 )
 public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Uses a BridgeDB REST service to map something identified into a source database " +
+        methodSummary="Uses a BridgeDb REST service to map something identified into a source database " +
         		"to a target database.",
         params="String restService, String identifier, String source, String target"
     )
@@ -39,7 +39,7 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Uses a BridgeDB REST service to map something identified into a source database " +
+        methodSummary="Uses a BridgeDb REST service to map something identified into a source database " +
         		"to any other known database.",
         params="String restService, String identifier, String source"
     )
@@ -47,7 +47,7 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Uses a local BridgeDB database service to map something identified into a source database " +
+        methodSummary="Uses a local BridgeDb database service to map something identified into a source database " +
         		"to a target database.",
         params="IDMapper database, String identifier, String source, String target"
     )
@@ -55,7 +55,7 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Uses a local BridgeDB database to map something identified into a source database " +
+        methodSummary="Uses a local BridgeDb database to map something identified into a source database " +
         		"to any other known database.",
         params="IDMapper database, String identifier, String source"
     )
@@ -63,7 +63,7 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Uses a local BridgeDB database to map something identified into a source database " +
+        methodSummary="Uses a local BridgeDb database to map something identified into a source database " +
         		"to any other known database. It returns a Set of Xref objects.",
         params="IDMapper database, Xref source"
     )
@@ -71,7 +71,7 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Uses a local BridgeDB database service to map something identified into a source database " +
+        methodSummary="Uses a local BridgeDb database service to map something identified into a source database " +
         		"to a target database.",
         params="IDMapper database, Xref source, String target"
     )
@@ -79,14 +79,14 @@ public interface IBridgedbManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Searches a BridgeDB REST service for the given query string, if the service supports searching.",
+        methodSummary="Searches a BridgeDb REST service for the given query string, if the service supports searching.",
         params="String restService, String query, int limit"
     )
     public List<String> search(String restService, String query, int limit) throws BioclipseException;
 
     @Recorded
     @PublishedMethod(
-        methodSummary="Searches a local BridgeDB instance for the given query string.",
+        methodSummary="Searches a local BridgeDb instance for the given query string.",
         params="IDMapper database, String query, int limit"
     )
     public List<String> search(IDMapper database, String query, int limit) throws BioclipseException;
@@ -142,7 +142,7 @@ public interface IBridgedbManager extends IBioclipseManager {
     
     @Recorded
     @PublishedMethod(
-        methodSummary="Creates a BridgeBD Xref object from the given identifier and source. Use listAllSources() to" +
+        methodSummary="Creates a BridgeDb Xref object from the given identifier and source. Use listAllSources() to" +
         		" get a list of source codes. An example is [\"3643\", \"L\"].",
         params="String identifier, String source"
     )
@@ -150,7 +150,7 @@ public interface IBridgedbManager extends IBioclipseManager {
     
     @Recorded
     @PublishedMethod(
-        methodSummary="Creates a BridgeBD Xref object from the given identifier and source. An example " +
+        methodSummary="Creates a BridgeDb Xref object from the given identifier and source. An example " +
         		"is \"Wi:Aspirin\".",
         params="String sourcedIdentifier"
     )
@@ -158,7 +158,7 @@ public interface IBridgedbManager extends IBioclipseManager {
     
     @Recorded
     @PublishedMethod(
-        methodSummary="Loads a BridgeDB Rdb database from a file location.",
+        methodSummary="Loads a BridgeDb Rdb database from a file location.",
         params="String location"
     )
     public IDMapper loadRelationalDatabase(String location) throws BioclipseException;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="net.bioclipse.bridgedb.idmappers.gene.hs_feature"
-      label="BridgeDB Gene ID mapping database (Homo sapiens)"
+      label="BridgeDb Gene ID mapping database (Homo sapiens)"
       version="2.6.2.20130701"
       provider-name="Egon Willighagen"
       plugin="net.bioclipse.bridgedb.idmappers.gene.hs">

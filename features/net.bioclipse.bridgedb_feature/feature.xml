@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="net.bioclipse.bridgedb_feature"
-      label="Bioclipse BridgeDB"
+      label="Bioclipse BridgeDb"
       version="2.6.2.qualifier"
       provider-name="Egon Willighagen"
       plugin="net.bioclipse.bridgedb">
 
    <description>
-      Bioclipse BridgeDB - Support for BridgeDB.org
+      Bioclipse BridgeDb - Support for BridgeDb.org
    </description>
 
    <copyright>
-      Copyright (c) 2011  Egon Willighagen
+      Copyright (c) 2011-2016  Egon Willighagen
    </copyright>
 
    <license>

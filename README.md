@@ -1,4 +1,4 @@
-Bioclipse plugin for BridgeDB:
+Bioclipse plugin for BridgeDb:
 
 http://www.bridgedb.org/
 
