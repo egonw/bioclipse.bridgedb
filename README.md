@@ -1,10 +1,8 @@
-Bioclipse plugin for BridgeDb:
+Bioclipse BridgeDb Module
+=====================
 
-http://www.bridgedb.org/
+[![Build Status](https://img.shields.io/jenkins/s/http/pele.farmbio.uu.se/jenkins/view/Bioclipse/job/Bioclipse.bridgedb.svg)](http://pele.farmbio.uu.se/jenkins/view/Bioclipse/job/Bioclipse.bridgedb/)
+[![Test Status](https://img.shields.io/jenkins/t/http/pele.farmbio.uu.se/jenkins/view/Tests/job/Bioclipse.test.bridgedb.svg)](http://pele.farmbio.uu.se/jenkins/view/Tests/job/Bioclipse.test.bridgedb/)
 
-Examples use
-------------
+See also http://www.bridgedb.org/
 
-Some examples using this Bioclipse manager can be found in this write up:
-
-https://www.writelatex.com/read/rstgvgxyzjyg
